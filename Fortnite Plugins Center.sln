@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fortnite Plugins Center.DiscordBot", "Fortnite Plugins Center.DiscordBot\Fortnite Plugins Center.DiscordBot.csproj", "{DA5F7D41-5D32-4819-A368-3E011EC6F632}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Fortnite Plugins Center.Shared", "Fortnite Plugins Center.Shared\Fortnite Plugins Center.Shared.shproj", "{AC660BC4-E089-4402-96C2-DA89F2281307}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fortnite Plugins Center.API", "Fortnite Plugins Center.API\Fortnite Plugins Center.API.csproj", "{0AEA85E6-24C4-44FD-8973-3E17AFF573A7}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Fortnite Plugins Center.Shared\Fortnite Plugins Center.Shared.projitems*{0aea85e6-24c4-44fd-8973-3e17aff573a7}*SharedItemsImports = 5
+		Fortnite Plugins Center.Shared\Fortnite Plugins Center.Shared.projitems*{ac660bc4-e089-4402-96c2-da89f2281307}*SharedItemsImports = 13
+		Fortnite Plugins Center.Shared\Fortnite Plugins Center.Shared.projitems*{da5f7d41-5d32-4819-a368-3e011ec6f632}*SharedItemsImports = 5
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA5F7D41-5D32-4819-A368-3E011EC6F632}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA5F7D41-5D32-4819-A368-3E011EC6F632}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA5F7D41-5D32-4819-A368-3E011EC6F632}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA5F7D41-5D32-4819-A368-3E011EC6F632}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AEA85E6-24C4-44FD-8973-3E17AFF573A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AEA85E6-24C4-44FD-8973-3E17AFF573A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AEA85E6-24C4-44FD-8973-3E17AFF573A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AEA85E6-24C4-44FD-8973-3E17AFF573A7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2789CD74-2F3F-4DF5-912B-2B2775127E9D}
+	EndGlobalSection
+EndGlobal

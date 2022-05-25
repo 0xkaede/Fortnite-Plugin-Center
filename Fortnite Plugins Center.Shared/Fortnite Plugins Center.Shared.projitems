@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>ac660bc4-e089-4402-96c2-da89f2281307</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Fortnite_Plugins_Center.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\MessageInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\UserResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\BaseException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\Common\NotFoundException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\Common\UnhandledErrorException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\Users\InvalidQueryException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\Users\UserNotFoundException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Mongo\Users.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Mongo\Data.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Mongo\IMongoSettings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\KaedeService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\MongoService.cs" />
+  </ItemGroup>
+</Project>
