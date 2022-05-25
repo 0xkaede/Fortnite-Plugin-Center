@@ -18,6 +18,8 @@ namespace Fortnite_Plugins_Center.Shared.Services
         public Task<Users> GetUsersCreate(string id, string username, string discriminator, string pfp);
 
         public Task<Users> GetUsersAddPlugin(string id, string content);
+
+        public Task<Users> GetUsersFollow(string idMain, string id);
     }
 
     public class KaedeService : IKaedeService
@@ -32,6 +34,7 @@ namespace Fortnite_Plugins_Center.Shared.Services
             public static Uri UsersById(string id) => new Uri(Base, $"users/id/{id}");
             public static Uri UsersCreate(string id, string username, string discriminator, string pfp) => new Uri(Base, $"users/createuser?id={ulong.Parse(id)}&username={username}&discriminator={discriminator}&pfp={pfp}");
             public static Uri UsersAddPlugin(string id, string content) => new Uri(Base, $"users/id/{id}/addplugin?content={content}");
+            public static Uri UsersFollow(string idMain, string id) => new Uri(Base, $"users/id/{idMain}/follow?id={id}");
         }
 
         public static async Task<T> GetData<T>(Uri endpoint)
@@ -54,5 +57,8 @@ namespace Fortnite_Plugins_Center.Shared.Services
 
         public async Task<Users> GetUsersAddPlugin(string id, string content)
             => await GetData<Users>(Endpoints.UsersAddPlugin(id, content));
+
+        public async Task<Users> GetUsersFollow(string idMain, string id)
+            => await GetData<Users>(Endpoints.UsersFollow(idMain, id));
     }
 }

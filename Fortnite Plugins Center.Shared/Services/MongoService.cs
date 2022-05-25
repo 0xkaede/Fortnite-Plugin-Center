@@ -21,6 +21,8 @@ namespace Fortnite_Plugins_Center.Shared.Services
         public Task<UserResponse> CreateUser(DiscordInfomation info);
 
         public Task<UserResponse> AddPlugin(Users info, Plugin plugin);
+
+        public Task<UserResponse> AddFollower(Users info, DiscordInfomation otherinfo);
     }
 
     public class MongoService : IMongoService
@@ -116,6 +118,42 @@ namespace Fortnite_Plugins_Center.Shared.Services
                 var update = Builders<Users>.Update.Set(x => x.Plugins, plugins).Set(x => x.LastUpdatedDate, date);
 
                 await _users.UpdateManyAsync(filter, update);
+                return UserResponse.Success;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return UserResponse.Error;
+            }
+        }
+
+        public async Task<UserResponse> AddFollower(Users info, DiscordInfomation otherinfo)
+        {
+            var date = DateTime.Now.ToUniversalTime().ToString("dd-MM-yyyy HH:mm:ss");
+
+            try
+            {
+                //i dunno what i did here but it wors :)
+                var users = await GetUsers();
+                var user = users.FirstOrDefault(x => x.DiscordInfo.Id == info.DiscordInfo.Id);
+
+                List<DiscordInfomation> followers = new List<DiscordInfomation>();
+
+                foreach (var friends in user.Following)
+                    if (friends.Id != otherinfo.Id)
+                        followers.Add(friends);
+
+                followers.Add(otherinfo);
+
+                var filter = Builders<Users>.Filter.Eq(x => x.DiscordInfo.Id, info.DiscordInfo.Id);
+                var update = Builders<Users>.Update.Set(x => x.Following, followers).Set(x => x.LastUpdatedDate, date);
+
+                await _users.UpdateManyAsync(filter, update);
+
+                var filterO = Builders<Users>.Filter.Eq(x => x.DiscordInfo.Id, otherinfo.Id);
+                var updateO = Builders<Users>.Update.Set(x => x.Followers, followers).Set(x => x.LastUpdatedDate, date);
+
+                await _users.UpdateManyAsync(filterO, updateO);
                 return UserResponse.Success;
             }
             catch (Exception ex)

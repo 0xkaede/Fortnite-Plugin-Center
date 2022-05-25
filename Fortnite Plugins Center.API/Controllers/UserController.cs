@@ -50,7 +50,7 @@ namespace Fortnite_Plugins_Center.API.Controllers
 
         [HttpGet]
         [Route("id/{id}/addplugin")]
-        public async Task<ActionResult<Users>> GetaddPlugin(string id, string content = "")
+        public async Task<ActionResult<Users>> GetAddPlugin(string id, string content = "")
         {
             var date = DateTime.Now.ToUniversalTime().ToString("dd-MM-yyyy HH:mm:ss");
 
@@ -80,6 +80,31 @@ namespace Fortnite_Plugins_Center.API.Controllers
 
             return user;
         }
+
+        [HttpGet]
+        [Route("id/{MainID}/follow")]
+        public async Task<ActionResult<Users>> GetFollow(string MainID, string id = "")
+        {
+            var date = DateTime.Now.ToUniversalTime().ToString("dd-MM-yyyy HH:mm:ss");
+
+            if (string.IsNullOrEmpty(id))
+                throw new InvalidQueryException("illegal id provided");
+
+            var users = await _mongoService.GetUsers();
+            var user = users.FirstOrDefault(x => x.DiscordInfo.Id == ulong.Parse(MainID));
+
+            if (user == null)
+                throw new UserNotFoundException(id.ToString());
+
+            var OtherInfo = users.FirstOrDefault(x => x.DiscordInfo.Id == ulong.Parse(id)).DiscordInfo;
+
+            var response = await _mongoService.AddFollower(user, OtherInfo);
+
+            user.Reponse = response;
+            user.Following.Add(OtherInfo);
+
+            return user;
+        } //beta test cba doing it
 
         [HttpGet]
         [Route("id/{id}")]

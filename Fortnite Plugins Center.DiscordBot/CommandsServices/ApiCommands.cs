@@ -63,6 +63,18 @@ namespace Fortnite_Plugins_Center.DiscordBot.CommandsServices
                 await Context.Channel.SendMessageAsync($"An error has been found, make sure you have used {Configuration.DiscordPrefix}signup to make a account!");
         }
 
+        [Command("addfollower")]
+        public async Task addfollower(params string[] args)
+        {
+            _kaedeService = new KaedeService();
+
+            var followuser = await _kaedeService.GetUsersFollow(Context.User.Id.ToString(), args[0]);
+
+            var GetUserargs = await _kaedeService.GetUsersById(args[0]);
+
+            await Context.Channel.SendMessageAsync($"You have started to follow,\nId: {args[0]}, Username: {GetUserargs.DiscordInfo.UserName}#{GetUserargs.DiscordInfo.Discriminator}");
+        }
+
         [Command("account")]
         public async Task account()
         {
